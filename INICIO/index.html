@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZOWGUI STUDIO | Nail Studio</title>
+
+  <meta
+    name="description"
+    content="ZOWGUI STUDIO — Nail Studio en Virreyes, San Fernando, Buenos Aires. Soft Gel, Nail Art y Semipermanente."
+  >
+
+  <meta name="theme-color" content="#080808">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       ZOWGUI STUDIO
+       Luxury Nail Studio
+       ========================================================= */
+
+    :root {
+      --black: #080808;
+      --black-soft: #101010;
+      --black-card: #151515;
+
+      --gold: #c9a45c;
+      --gold-light: #e7cf91;
+      --gold-dark: #8f6d31;
+
+      --white: #f8f6f1;
+      --white-soft: #cfcac0;
+      --gray: #8d8a84;
+
+      --border: rgba(201, 164, 92, 0.25);
+
+      --serif: "Cormorant Garamond", serif;
+      --sans: "Montserrat", sans-serif;
+
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* =========================================================
+       UTILITIES
+       ========================================================= */
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .gold {
+      color: var(--gold-light);
+    }
+
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(42px, 6vw, 70px);
+      font-weight: 400;
+      line-height: 0.95;
+      color: var(--white);
+    }
+
+    .section-description {
+      max-width: 570px;
+      margin-top: 25px;
+      color: var(--white-soft);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    /* =========================================================
+       PRELOADER
+       ========================================================= */
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-content {
+      text-align: center;
+    }
+
+    .preloader-logo {
+      width: 130px;
+      margin: 0 auto 25px;
+      animation: pulse 1.8s infinite;
+    }
+
+    .preloader-line {
+      width: 100px;
+      height: 1px;
+      background: var(--gold);
+      margin: auto;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 22px 0;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      background: rgba(8, 8, 8, 0.94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(201, 164, 92, 0.12);
+      padding: 14px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      width: 90px;
+      transition: var(--transition);
+    }
+
+    .nav-logo:hover {
+      opacity: 0.8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white-soft);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border: 1px solid var(--gold-dark);
+      padding: 12px 20px;
+      color: var(--gold-light) !important;
+    }
+
+    .nav-cta::after {
+      display: none;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black) !important;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 38px;
+      height: 38px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 80% 40%,
+          rgba(201, 164, 92, 0.09),
+          transparent 35%
+        ),
+        var(--black);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 164, 92, 0.08);
+      right: -200px;
+      top: 15%;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 164, 92, 0.05);
+      right: -100px;
+      top: 25%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding-top: 80px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(75px, 12vw, 150px);
+      line-height: 0.72;
+      letter-spacing: -5px;
+      margin-left: -7px;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--gold-light);
+    }
+
+    .hero-subtitle {
+      font-family: var(--serif);
+      font-size: clamp(25px, 3vw, 38px);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--white-soft);
+      margin-top: 38px;
+    }
+
+    .hero-description {
+      max-width: 470px;
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.9;
+      margin-top: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 27px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold)
+      );
+      color: var(--black);
+      border: 1px solid var(--gold);
+      font-weight: 600;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(201, 164, 92, 0.18);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(201, 164, 92, 0.45);
+      color: var(--gold-light);
+    }
+
+    .btn-outline:hover {
+      background: rgba(201, 164, 92, 0.08);
+      border-color: var(--gold);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gray);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .hero-scroll::after {
+      content: "";
+      width: 1px;
+      height: 45px;
+      background: linear-gradient(
+        var(--gold),
+        transparent
+      );
+    }
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
+
+    .about {
+      background: var(--black-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 90px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      padding: 15px;
+    }
+
+    .about-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--gold-dark);
+      transform: translate(15px, 15px);
+      opacity: 0.5;
+    }
+
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-content {
+      padding-left: 10px;
+    }
+
+    .about-quote {
+      font-family: var(--serif);
+      font-size: 29px;
+      line-height: 1.4;
+      color: var(--white);
+      margin-top: 35px;
+    }
+
+    .about-quote span {
+      color: var(--gold-light);
+    }
+
+    /* =========================================================
+       SERVICES
+       ========================================================= */
+
+    .services {
+      background: var(--black);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 65px;
+    }
+
+    .services-header .section-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+
+    .service-card {
+      min-height: 340px;
+      padding: 45px 35px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      top: 0;
+      background: var(--gold);
+      transition: 0.5s ease;
+    }
+
+    .service-card:hover {
+      background: var(--black-card);
+      transform: translateY(-5px);
+    }
+
+    .service-card:hover::before {
+      width: 100%;
+    }
+
+    .service-number {
+      color: var(--gold-dark);
+      font-family: var(--serif);
+      font-size: 25px;
+    }
+
+    .service-icon {
+      font-size: 30px;
+      color: var(--gold);
+      margin: 35px 0 20px;
+    }
+
+    .service-title {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .service-text {
+      color: var(--gray);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .service-link {
+      display: inline-block;
+      margin-top: 25px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       GALLERY
+       ========================================================= */
+
+    .gallery {
+      background: var(--black-soft);
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .gallery-grid {
+      columns: 3;
+      column-gap: 18px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--black-card);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.7),
+        transparent 60%
+      );
+      opacity: 0;
+      transition: var(--transition);
+      display: flex;
+      align-items: end;
+      padding: 20px;
+    }
+
+    .gallery-overlay span {
+      color: var(--gold-light);
+      font-family: var(--serif);
+      font-size: 22px;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* =========================================================
+       LOCATION
+       ========================================================= */
+
+    .location {
+      background: var(--black);
+    }
+
+    .location-box {
+      border: 1px solid var(--border);
+      padding: 70px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(201, 164, 92, 0.06),
+          transparent 45%
+        );
+    }
+
+    .location-box::after {
+      content: "Z";
+      position: absolute;
+      right: -20px;
+      bottom: -80px;
+      font-family: var(--serif);
+      font-size: 300px;
+      color: rgba(201, 164, 92, 0.035);
+      line-height: 1;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .location-details {
+      margin-top: 35px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .location-detail {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .location-detail-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .location-detail small {
+      display: block;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .location-detail p {
+      color: var(--white-soft);
+      font-size: 13px;
+    }
+
+    .location-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .location-cta-inner {
+      text-align: center;
+    }
+
+    .location-cta-title {
+      font-family: var(--serif);
+      font-size: 48px;
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    /* =========================================================
+       FAQ
+       ========================================================= */
+
+    .faq {
+      background: var(--black-soft);
+    }
+
+    .faq-wrapper {
+      max-width: 850px;
+      margin: 60px auto 0;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      padding: 25px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .faq-plus {
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 300;
+      transition: var(--transition);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-answer p {
+      color: var(--gray);
+      font-size: 12px;
+      line-height: 1.8;
+      padding-bottom: 25px;
+      max-width: 700px;
+    }
+
+    .faq-item.active .faq-plus {
+      transform: rotate(45deg);
+    }
+
+    /* =========================================================
+       BOOKING CTA
+       ========================================================= */
+
+    .booking {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(201, 164, 92, 0.10),
+          transparent 60%
+        ),
+        var(--black);
+    }
+
+    .booking::before,
+    .booking::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(201, 164, 92, 0.08);
+      border-radius: 50%;
+    }
+
+    .booking::before {
+      width: 500px;
+      height: 500px;
+    }
+
+    .booking::after {
+      width: 700px;
+      height: 700px;
+    }
+
+    .booking-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .booking-title {
+      font-family: var(--serif);
+      font-size: clamp(55px, 8vw, 100px);
+      font-weight: 400;
+      line-height: 0.9;
+    }
+
+    .booking-title span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .booking-description {
+      max-width: 500px;
+      margin: 25px auto 35px;
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      background: #050505;
+      border-top: 1px solid rgba(201, 164, 92, 0.12);
+      padding: 55px 0 25px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo {
+      width: 120px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 25px;
+    }
+
+    .footer-social a {
+      color: var(--gray);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #555;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       WHATSAPP FLOAT
+       ========================================================= */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 900;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      transition: var(--transition);
+      font-size: 25px;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08) translateY(-3px);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.25);
+    }
+
+    .whatsapp-pulse {
+      position: absolute;
+      inset: -5px;
+      border: 1px solid #25d366;
+      border-radius: 50%;
+      animation: whatsappPulse 2s infinite;
+    }
+
+    @keyframes whatsappPulse {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.8;
+      }
+      70% {
+        transform: scale(1.25);
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* =========================================================
+       REVEAL ANIMATIONS
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 8, 8, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transform: translateX(100%);
+        transition: var(--transition);
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 14px;
+      }
+
+      .menu-toggle {
+        display: flex;
+        position: relative;
+        z-index: 1001;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .about-image {
+        max-width: 550px;
+        margin: auto;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-box {
+        padding: 45px 30px;
+      }
+
+      .gallery-grid {
+        columns: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(100% - 30px, 1180px);
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      header {
+        padding: 17px 0;
+      }
+
+      .nav-logo {
+        width: 75px;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-content {
+        padding-top: 80px;
+      }
+
+      .hero-title {
+        font-size: clamp(62px, 20vw, 100px);
+        letter-spacing: -3px;
+      }
+
+      .hero-subtitle {
+        font-size: 25px;
+      }
+
+      .hero-description {
+        font-size: 12px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-scroll {
+        display: none;
+      }
+
+      .section-title {
+        font-size: 48px;
+      }
+
+      .about-quote {
+        font-size: 25px;
+      }
+
+      .service-card {
+        min-height: auto;
+        padding: 38px 28px;
+      }
+
+      .gallery-header {
+        display: block;
+      }
+
+      .gallery-header .section-description {
+        margin-top: 20px;
+      }
+
+      .gallery-grid {
+        columns: 1;
+      }
+
+      .location-box {
+        padding: 40px 25px;
+      }
+
+      .location-cta-title {
+        font-size: 42px;
+      }
+
+      .booking {
+        padding: 90px 0;
+      }
+
+      .booking-title {
+        font-size: 65px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .whatsapp-float {
+        width: 53px;
+        height: 53px;
+        right: 18px;
+        bottom: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       PRELOADER
+       ======================================================== -->
+
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <img
+        src="LOGO.webp"
+        alt="ZOWGUI STUDIO"
+        class="preloader-logo"
+      >
+      <div class="preloader-line"></div>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       HEADER
+       ======================================================== -->
+
+  <header id="header">
+    <div class="container nav">
+
+      <a href="#inicio" aria-label="ZOWGUI STUDIO">
+        <img
+          src="LOGO.webp"
+          alt="ZOWGUI STUDIO"
+          class="nav-logo"
+        >
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+
+        <li>
+          <a href="#inicio">Inicio</a>
+        </li>
+
+        <li>
+          <a href="#studio">Studio</a>
+        </li>
+
+        <li>
+          <a href="#servicios">Servicios</a>
+        </li>
+
+        <li>
+          <a href="#galeria">Galería</a>
+        </li>
+
+        <li>
+          <a href="#ubicacion">Ubicación</a>
+        </li>
+
+        <li>
+          <a
+            href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Quisiera%20consultar%20disponibilidad%20para%20realizarme%20las%20u%C3%B1as.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20sobre%20los%20servicios%20y%20pr%C3%B3ximos%20turnos%3F"
+            target="_blank"
+            rel="noopener"
+            class="nav-cta"
+          >
+            Reservar
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =====================================================
+         HERO
+         ====================================================== -->
+
+    <section class="hero" id="inicio">
+
+      <div class="container">
+
+        <div class="hero-content">
+
+          <div class="hero-eyebrow reveal">
+            Nail Studio · Virreyes
+          </div>
+
+          <h1 class="hero-title reveal reveal-delay-1">
+            ZOWGUI
+            <span>STUDIO</span>
+          </h1>
+
+          <p class="hero-subtitle reveal reveal-delay-2">
+            Tu estilo, en cada detalle.
+          </p>
+
+          <p class="hero-description reveal reveal-delay-3">
+            Un espacio dedicado al cuidado, diseño y expresión
+            de tus uñas. Creamos cada set pensando en tu estilo,
+            tus gustos y esos pequeños detalles que hacen la diferencia.
+          </p>
+
+          <div class="hero-actions reveal reveal-delay-3">
+
+            <a
+              href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Quisiera%20consultar%20disponibilidad%20para%20realizarme%20las%20u%C3%B1as.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20sobre%20los%20servicios%20y%20pr%C3%B3ximos%20turnos%3F"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-gold"
+            >
+              Consultar turno
+              <span>→</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/zowgui.studio"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline"
+            >
+              Instagram
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="hero-scroll">
+        Descubrí
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+         ====================================================== -->
+
+    <section class="section about" id="studio">
+
+      <div class="container">
+
+        <div class="about-grid">
+
+          <div class="about-image reveal">
+
+            <img
+              src="ASD.webp"
+              alt="Trabajo de uñas realizado por ZOWGUI STUDIO"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="about-content">
+
+            <div class="section-label reveal">
+              ZOWGUI STUDIO
+            </div>
+
+            <h2 class="section-title reveal reveal-delay-1">
+              Belleza que
+              <span class="gold">habla de vos.</span>
+            </h2>
+
+            <p class="section-description reveal reveal-delay-2">
+              En ZOWGUI STUDIO creemos que las uñas son mucho más
+              que un detalle: son una forma de expresión.
+            </p>
+
+            <p class="about-quote reveal reveal-delay-3">
+              Diseños pensados para que cada vez que mires tus manos
+              sientas <span>“esto es muy yo”.</span>
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES
+         ====================================================== -->
+
+    <section class="section services" id="servicios">
+
+      <div class="container">
+
+        <div class="services-header">
+
+          <div class="section-label reveal">
+            Nuestros servicios
+          </div>
+
+          <h2 class="section-title reveal reveal-delay-1">
+            Elegí tu <span class="gold">estilo.</span>
+          </h2>
+
+          <p class="section-description reveal reveal-delay-2">
+            Trabajamos cada servicio de manera personalizada.
+            Consultanos por disponibilidad, diseños y opciones
+            para encontrar el servicio ideal para vos.
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+          <!-- Servicio 01 -->
+
+          <article class="service-card reveal">
+
+            <div class="service-number">
+              01
+            </div>
+
+            <div class="service-icon">
+              ✦
+            </div>
+
+            <h3 class="service-title">
+              Soft Gel
+            </h3>
+
+            <p class="service-text">
+              Uñas con un acabado elegante y sofisticado,
+              pensadas para acompañar tu estilo y darle
+              protagonismo a tus manos.
+            </p>
+
+            <a
+              href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Me%20interesa%20el%20servicio%20de%20Soft%20Gel.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20y%20disponibilidad%3F"
+              target="_blank"
+              rel="noopener"
+              class="service-link"
+            >
+              Consultar →
+            </a>
+
+          </article>
+
+
+          <!-- Servicio 02 -->
+
+          <article class="service-card reveal reveal-delay-1">
+
+            <div class="service-number">
+              02
+            </div>
+
+            <div class="service-icon">
+              ◇
+            </div>
+
+            <h3 class="service-title">
+              Nail Art
+            </h3>
+
+            <p class="service-text">
+              Diseños personalizados para quienes quieren
+              darle un toque único, creativo y diferente
+              a sus uñas.
+            </p>
+
+            <a
+              href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Me%20interesa%20el%20servicio%20de%20Nail%20Art.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20y%20disponibilidad%3F"
+              target="_blank"
+              rel="noopener"
+              class="service-link"
+            >
+              Consultar →
+            </a>
+
+          </article>
+
+
+          <!-- Servicio 03 -->
+
+          <article class="service-card reveal reveal-delay-2">
+
+            <div class="service-number">
+              03
+            </div>
+
+            <div class="service-icon">
+              ✧
+            </div>
+
+            <h3 class="service-title">
+              Semipermanente
+            </h3>
+
+            <p class="service-text">
+              Un acabado prolijo y duradero para mantener
+              tus uñas impecables y listas para cualquier ocasión.
+            </p>
+
+            <a
+              href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Me%20interesa%20el%20servicio%20de%20Semipermanente.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20y%20disponibilidad%3F"
+              target="_blank"
+              rel="noopener"
+              class="service-link"
+            >
+              Consultar →
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALLERY
+         ====================================================== -->
+
+    <section class="section gallery" id="galeria">
+
+      <div class="container">
+
+        <div class="gallery-header">
+
+          <div>
+
+            <div class="section-label reveal">
+              Nuestro trabajo
+            </div>
+
+            <h2 class="section-title reveal reveal-delay-1">
+              Nails <span class="gold">inspired.</span>
+            </h2>
+
+          </div>
+
+          <p class="section-description reveal reveal-delay-2">
+            Algunos de nuestros trabajos.
+            Inspirate, guardá tus favoritos y consultanos
+            por tu próximo diseño.
+          </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item reveal">
+
+            <img
+              src="ASD.webp"
+              alt="Diseño de uñas ZOWGUI STUDIO"
+              loading="lazy"
+            >
+
+            <div class="gallery-overlay">
+              <span>ZOWGUI STUDIO</span>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal reveal-delay-1">
+
+            <img
+              src="ASD1.webp"
+              alt="Diseño de uñas ZOWGUI STUDIO"
+              loading="lazy"
+            >
+
+            <div class="gallery-overlay">
+              <span>Soft Gel</span>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal reveal-delay-2">
+
+            <img
+              src="ASD2.webp"
+              alt="Diseño de uñas ZOWGUI STUDIO"
+              loading="lazy"
+            >
+
+            <div class="gallery-overlay">
+              <span>Nail Art</span>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal">
+
+            <img
+              src="ASD3.webp"
+              alt="Diseño de uñas ZOWGUI STUDIO"
+              loading="lazy"
+            >
+
+            <div class="gallery-overlay">
+              <span>Details</span>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal reveal-delay-1">
+
+            <img
+              src="ASD4.webp"
+              alt="Diseño de uñas ZOWGUI STUDIO"
+              loading="lazy"
+            >
+
+            <div class="gallery-overlay">
+              <span>Your Style</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LOCATION
+         ====================================================== -->
+
+    <section class="section location" id="ubicacion">
+
+      <div class="container">
+
+        <div class="location-box">
+
+          <div class="location-grid">
+
+            <div>
+
+              <div class="section-label reveal">
+                Encontranos
+              </div>
+
+              <h2 class="section-title reveal reveal-delay-1">
+                Tu próximo
+                <span class="gold">set</span>
+                empieza acá.
+              </h2>
+
+              <div class="location-details">
+
+                <div class="location-detail reveal reveal-delay-2">
+
+                  <div class="location-detail-icon">
+                    ⌖
+                  </div>
+
+                  <div>
+                    <small>Ubicación</small>
+                    <p>
+                      Virreyes, San Fernando,<br>
+                      Buenos Aires
+                    </p>
+                  </div>
+
+                </div>
+
+
+                <div class="location-detail reveal reveal-delay-3">
+
+                  <div class="location-detail-icon">
+                    ✦
+                  </div>
+
+                  <div>
+                    <small>Turnos</small>
+                    <p>
+                      Consultá disponibilidad<br>
+                      directamente por WhatsApp.
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="location-cta reveal">
+
+              <div class="location-cta-inner">
+
+                <div class="location-cta-title">
+                  ¿Lista para<br>
+                  <span class="gold">brillar?</span>
+                </div>
+
+                <a
+                  href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Quisiera%20consultar%20disponibilidad%20para%20realizarme%20las%20u%C3%B1as.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20sobre%20los%20servicios%20y%20pr%C3%B3ximos%20turnos%3F"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn btn-gold"
+                >
+                  Hablar por WhatsApp →
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FAQ
+         ====================================================== -->
+
+    <section class="section faq">
+
+      <div class="container">
+
+        <div style="text-align:center;">
+
+          <div class="section-label reveal">
+            Preguntas frecuentes
+          </div>
+
+          <h2 class="section-title reveal reveal-delay-1">
+            Antes de tu <span class="gold">turno.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="faq-wrapper">
+
+          <div class="faq-item reveal">
+
+            <button class="faq-question">
+              ¿Cómo puedo reservar un turno?
+              <span class="faq-plus">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Podés comunicarte directamente con ZOWGUI STUDIO
+                por WhatsApp para consultar disponibilidad,
+                servicios y próximos turnos.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item reveal">
+
+            <button class="faq-question">
+              ¿Dónde está ubicado el estudio?
+              <span class="faq-plus">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Estamos ubicados en Virreyes, San Fernando,
+                Buenos Aires.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item reveal">
+
+            <button class="faq-question">
+              ¿Qué servicios realizan?
+              <span class="faq-plus">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                Actualmente trabajamos con Soft Gel, Nail Art
+                y Semipermanente. Para conocer opciones,
+                disponibilidad y valores, escribinos por WhatsApp.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="faq-item reveal">
+
+            <button class="faq-question">
+              ¿Puedo consultar por un diseño específico?
+              <span class="faq-plus">+</span>
+            </button>
+
+            <div class="faq-answer">
+              <p>
+                ¡Sí! Podés enviarnos una referencia o contarnos
+                qué estilo tenés en mente para consultar las
+                posibilidades.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BOOKING CTA
+         ====================================================== -->
+
+    <section class="booking">
+
+      <div class="container">
+
+        <div class="booking-content">
+
+          <div class="section-label reveal">
+            ZOWGUI STUDIO
+          </div>
+
+          <h2 class="booking-title reveal reveal-delay-1">
+            Tus manos.
+            <br>
+            Tu <span>momento.</span>
+          </h2>
+
+          <p class="booking-description reveal reveal-delay-2">
+            Consultá disponibilidad y encontrá el servicio
+            perfecto para vos.
+          </p>
+
+          <a
+            href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Quisiera%20consultar%20disponibilidad%20para%20realizarme%20las%20u%C3%B1as.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20sobre%20los%20servicios%20y%20pr%C3%B3ximos%20turnos%3F"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-gold reveal reveal-delay-3"
+          >
+            Consultar mi turno →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-top">
+
+        <a href="#inicio">
+
+          <img
+            src="LOGO.webp"
+            alt="ZOWGUI STUDIO"
+            class="footer-logo"
+          >
+
+        </a>
+
+        <div class="footer-social">
+
+          <a
+            href="https://www.instagram.com/zowgui.studio"
+            target="_blank"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+
+          <a
+            href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Quisiera%20consultar%20disponibilidad."
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="year"></span> ZOWGUI STUDIO
+        </span>
+
+        <span>
+          Virreyes · San Fernando · Buenos Aires
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       WHATSAPP FLOAT
+       ======================================================== -->
+
+  <a
+    href="https://wa.me/541133592551?text=Hola%20ZOWGUI%20STUDIO%20%F0%9F%92%85%20Quisiera%20consultar%20disponibilidad%20para%20realizarme%20las%20u%C3%B1as.%20%C2%BFMe%20podr%C3%ADan%20pasar%20informaci%C3%B3n%20sobre%20los%20servicios%20y%20pr%C3%B3ximos%20turnos%3F"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp-float"
+    aria-label="Contactar por WhatsApp"
+  >
+    <span class="whatsapp-pulse"></span>
+    ☎
+  </a>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================== -->
+
+  <script>
+
+    /* =====================================================
+       PRELOADER
+       ====================================================== */
+
+    window.addEventListener("load", () => {
+
+      const preloader = document.getElementById("preloader");
+
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 600);
+
+    });
+
+
+    /* =====================================================
+       HEADER SCROLL
+       ====================================================== */
+
+    const header = document.getElementById("header");
+
+    function updateHeader() {
+
+      if (window.scrollY > 40) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+    }
+
+    window.addEventListener("scroll", updateHeader);
+
+    updateHeader();
+
+
+    /* =====================================================
+       MOBILE MENU
+       ====================================================== */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen = navLinks.classList.toggle("active");
+
+      document.body.classList.toggle("menu-open", isOpen);
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      menuToggle.innerHTML = isOpen ? "×" : "☰";
+
+    });
+
+
+    /* Close mobile menu after clicking a link */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+        document.body.classList.remove("menu-open");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuToggle.innerHTML = "☰";
+
+      });
+
+    });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+       ====================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* =====================================================
+       FAQ ACCORDION
+       ====================================================== */
+
+    const faqItems =
+      document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+
+      const question =
+        item.querySelector(".faq-question");
+
+      const answer =
+        item.querySelector(".faq-answer");
+
+      question.addEventListener("click", () => {
+
+        const isActive =
+          item.classList.contains("active");
+
+
+        /* Close all */
+
+        faqItems.forEach(otherItem => {
+
+          otherItem.classList.remove("active");
+
+          const otherAnswer =
+            otherItem.querySelector(".faq-answer");
+
+          otherAnswer.style.maxHeight = null;
+
+        });
+
+
+        /* Open selected */
+
+        if (!isActive) {
+
+          item.classList.add("active");
+
+          answer.style.maxHeight =
+            answer.scrollHeight + "px";
+
+        }
+
+      });
+
+    });
+
+
+    /* =====================================================
+       CURRENT YEAR
+       ====================================================== */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =====================================================
+       IMAGE ERROR HANDLING
+       ====================================================== */
+
+    document.querySelectorAll("img").forEach(img => {
+
+      img.addEventListener("error", () => {
+
+        img.style.background =
+          "linear-gradient(135deg, #151515, #0a0a0a)";
+
+        img.style.minHeight = "200px";
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
